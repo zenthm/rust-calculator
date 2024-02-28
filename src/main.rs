@@ -1,14 +1,16 @@
-use std::io;
+use std::io::{self, Write};
 
 fn main() {
     println!("Calculator in Rust");
 
+    let stdin = io::stdin();
+    let mut stdout = io::stdout();
+
     loop {
-        println!("Input: ");
+        print!("Input: ");
+        stdout.flush().unwrap();
 
         let mut input = String::new();
-        io::stdin()
-            .read_line(&mut input)
-            .expect("Failed to read line");
+        stdin.read_line(&mut input).expect("Failed to read line");
     }
 }
